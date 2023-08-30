@@ -1,30 +1,56 @@
-const { createDogs } = require("../controllers/dogsControllers");
+const { createDogs, getDogsById, getDogsByName, getAllDogs } = require("../controllers/dogsControllers");
+require('dotenv').config();
+const { URL_BASE } = process.env;
 
-const getDogsHandler = (req, res) => {
-    const {name} = req.query;
-    if(name !== undefined) {
-        res.send(`Perro enontrado: ${name}`)
-    }else{
-        res.send("Informacion de todos los Perros")
-    }    
+const getDogsHandler = async (req, res) => {
+    const { name } = req.query;
+    try{
+        const results = name ? await getDogsByName(name) : await getAllDogs();
+        res.status(200).json(results);
+    }catch (error) {
+        res.status(400).json({error: error.message})
+    }
 };
 
-const getDogsByIdHandler = (req, res) => {
-    const {id} = req.params; //obtengo el valor del parametro :id
-    res.status(200).send(`Esta ruta obtiene el detalle de una raza específica ${id}`);
+const getDogsByIdHandler = async (req, res) => {
+    const { id } = req.params;
+    const source = isNaN(id) ? "DB" : "API";
+    try {
+        const dog = await getDogsById(id, source);
+        const results = {
+            id: dog.id,
+            imagen: dog.imagen,
+            nombre: dog.nombre,
+            altura: dog.altura,
+            peso: dog.peso,
+            años_de_vida: dog.años_de_vida,
+            creado_DB: source === "DB"
+        };
+        if (source === "API") {
+            results.imagen = `${URL_BASE}${dog.reference_image_id}.jpg`;
+            results.nombre = dog.name;
+            results.altura = dog.height ? dog.height.metric : null;
+            results.peso = dog.weight ? dog.weight.metric : null;
+            results.años_de_vida = dog.life_span;
+        }
+        res.status(200).json(results);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
 };
 
 
 const createDogsHandler = async (req, res) => {
+    const { imagen, nombre, altura, peso, años_de_vida } = req.body;
     try {
-    const {imagen, nombre, altura, peso, años_de_vida} = req.body;
     const newDog = await createDogs(imagen, nombre, altura, peso, años_de_vida);
     res.status(201).json(newDog)
     } catch (error) {
-        res.status(400).json({error: error.message})
+    res.status(400).json({error: error.message})
     }
-
 };
+
+
 
 
 module.exports = {
