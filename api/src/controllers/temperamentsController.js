@@ -40,6 +40,20 @@ const getTemperaments = async () => {
     }
 };
 
+
+
+const createTemperaments = async (nombre) => {
+    try {
+        const newTemperament = await Temperaments.create({ nombre });
+        return newTemperament;
+    } catch (error) {
+        throw new Error(`Error creating temperament: ${error.message}`);
+    }
+};
+
+
+
 module.exports = {
-    getTemperaments
+    getTemperaments,
+    createTemperaments
 };

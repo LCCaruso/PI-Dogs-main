@@ -29,6 +29,10 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    temperamento: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     creado_DB: {
       type: DataTypes.BOOLEAN,
       defaultValue: true,

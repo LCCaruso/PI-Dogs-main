@@ -24,6 +24,7 @@ const getDogsByIdHandler = async (req, res) => {
             altura: dog.altura,
             peso: dog.peso,
             años_de_vida: dog.años_de_vida,
+            temperamento: dog.temperamento,
             creado_DB: source === "DB"
         };
         if (source === "API") {
@@ -32,6 +33,7 @@ const getDogsByIdHandler = async (req, res) => {
             results.altura = dog.height ? dog.height.metric : null;
             results.peso = dog.weight ? dog.weight.metric : null;
             results.años_de_vida = dog.life_span;
+            results.temperamento = dog.temperament
         }
         res.status(200).json(results);
     } catch (error) {
@@ -41,9 +43,9 @@ const getDogsByIdHandler = async (req, res) => {
 
 
 const createDogsHandler = async (req, res) => {
-    const { imagen, nombre, altura, peso, años_de_vida } = req.body;
+    const { imagen, nombre, altura, peso, años_de_vida, temperamento } = req.body;
     try {
-    const newDog = await createDogs(imagen, nombre, altura, peso, años_de_vida);
+    const newDog = await createDogs(imagen, nombre, altura, peso, años_de_vida, temperamento);
     res.status(201).json(newDog)
     } catch (error) {
     res.status(400).json({error: error.message})

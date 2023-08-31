@@ -1,6 +1,6 @@
 require('dotenv').config();
 const { YOUR_API_KEY } = process.env;
-const { Dogs } = require("../db");
+const { Dogs, Temperaments } = require("../db");
 const axios = require("axios"); 
 const { Op } = require("sequelize");
 
@@ -14,6 +14,7 @@ const cleanArray = (arr) => {
             altura: elem.height.metric,
             peso: elem.weight.metric,
             años_de_vida: elem.life_span,
+            temperamento: elem.temperament,
             creado_DB: false
         };
     });
@@ -42,6 +43,7 @@ const getDogsByName = async (name) => {
         altura: dog.altura,
         peso: dog.peso,
         años_de_vida: dog.años_de_vida,
+        temperamento: dog.temperamento,
         creado_DB: true
     })));
     return results;
@@ -55,12 +57,31 @@ const getDogsById = async (id, source) => {
     await Dogs.findByPk(id);
     return dog;
 };
-// , { attributes: ["imagen", "nombre", "altura", "peso", "años_de_vida"] }
 
 
-const createDogs = async (imagen, nombre, altura, peso, años_de_vida) => {
-    const newDog = await Dogs.create({imagen, nombre, altura, peso, años_de_vida})
-    return newDog;
+const createDogs = async (imagen, nombre, altura, peso, años_de_vida, temperamento) => {
+    try {
+        if (!temperamento || temperamento.length === 0) {
+            throw new Error("Debe proporcionar al menos un temperamento");
+        }
+        const newDog = await Dogs.create({ imagen, nombre, altura, peso, años_de_vida, temperamento });
+        const temperamentsList = temperamento.split(', ');
+        const existingTemperaments = await findOrCreateTemperaments(temperamentsList);
+        await newDog.setTemperaments(existingTemperaments);
+        return newDog;
+    } catch (error) {
+        throw new Error(`Error al crear el perro: ${error.message}`);
+    }
+};
+
+const findOrCreateTemperaments = async (temperamentsList) => {
+    const existingTemperaments = await Temperaments.findAll({
+        where: { nombre: temperamentsList }
+    });
+    const existingTemperamentNames = existingTemperaments.map(temperament => temperament.nombre);
+    const newTemperaments = temperamentsList.filter(temperamento => !existingTemperamentNames.includes(temperamento));
+    const createdTemperaments = await Temperaments.bulkCreate(newTemperaments.map(nombre => ({ nombre })));
+    return [...existingTemperaments, ...createdTemperaments];
 };
 
 
