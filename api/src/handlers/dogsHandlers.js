@@ -32,8 +32,8 @@ const getDogsByIdHandler = async (req, res) => {
             results.nombre = dog.name;
             results.altura = dog.height ? dog.height.metric : null;
             results.peso = dog.weight ? dog.weight.metric : null;
-            results.años_de_vida = dog.life_span;
             results.temperamento = dog.temperament
+            results.años_de_vida = dog.life_span;
         }
         res.status(200).json(results);
     } catch (error) {
