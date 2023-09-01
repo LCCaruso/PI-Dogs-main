@@ -2,11 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import { BrowserRouter } from "react-router-dom"; //con esto, al envolver App, ya tiene la capacidad de definir rutas
+import { Provider } from 'react-redux';
+import store from "./redux/store"
 
 ReactDOM.render(
+  <Provider store={store}>
     <BrowserRouter>
-    <App />
-    </BrowserRouter>,
+      <App/>
+    </BrowserRouter>
+  </Provider>,
   document.getElementById('root')
 );
 

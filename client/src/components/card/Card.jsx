@@ -1,10 +1,14 @@
+import style from "./Card.module.css"
+
 const Card = (props) => {
     return (
-        <div>
-            <p>Imagen:{props.imagen}</p>
-            <p>Nombre:{props.nombre}</p>
-            <p>Temperamento:{props.temperamento}</p>
-            <p>Peso:{props.peso}</p>
+        <div className={style.contenedor}>
+            <img className={style.imagen} src={`https://cdn2.thedogapi.com/images/${props.image}.jpg`} alt={props.name} />
+                <div className={style.tipografias}>
+                    <p>{props.name}</p>
+                    <p>Temperamento: {props.temperament}</p>
+                    <p>Peso: {props.weight} kg</p>
+                </div>
         </div>
     )
 };

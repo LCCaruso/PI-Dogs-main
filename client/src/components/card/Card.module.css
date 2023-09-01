@@ -1,0 +1,21 @@
+.contenedor {
+    background-color: rgb(221, 221, 190);
+    border-radius: 20px;
+    height: 400px;
+    width: 400px;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.imagen{
+    width: 350px;
+    height: 250px;
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+.tipografias{
+    text-decoration: none;
+    font-family: Helvetica, sans-serif;
+    font-size: 15px;
+}
