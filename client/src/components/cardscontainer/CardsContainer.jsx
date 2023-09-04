@@ -11,7 +11,7 @@ const dogs = useSelector(state=>state.dogs)
     return (
         <div className={style.contenedorDeCards}>
             {dogs.map(dog=>{
-            return <Card image={dog.reference_image_id} name={dog.name} temperament={dog.temperament} weight={dog.weight.metric}/>})};
+            return <Card id={dog.id} imagen={dog.imagen} nombre={dog.nombre} temperamento={dog.temperamento} peso={dog.peso}/>})};
         </div>
     )
 };

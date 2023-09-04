@@ -8,7 +8,7 @@ const { Op } = require("sequelize");
 const cleanArray = (arr) => {
     const clean = arr.map(elem=>{
         return {
-            // id: elem.id,
+            id: elem.id,
             imagen: elem.image.url,
             nombre: elem.name,
             // altura: elem.height.metric,
@@ -24,7 +24,7 @@ const cleanArray = (arr) => {
 const cleanArrayDB = (arr) => {
     const clean = arr.map(elem=>{
         return {
-            // id: elem.id,
+            id: elem.id,
             imagen: elem.imagen,
             nombre: elem.nombre,
             // altura: elem.altura,

@@ -1,14 +1,16 @@
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import style from "./Card.module.css"
 
 const Card = (props) => {
+
     return (
         <div className={style.contenedor}>
-            <img className={style.imagen} src={`https://cdn2.thedogapi.com/images/${props.image}.jpg`} alt={props.name} />
-                <div className={style.tipografias}>
-                    <p>{props.name}</p>
-                    <p>Temperamento: {props.temperament}</p>
-                    <p>Peso: {props.weight} kg</p>
-                </div>
+            <Link to={`/detail/${props.id}`}>
+            <img className={style.imagen} src={props.imagen} alt={props.nombre} />
+            </Link>        
+            <p className={style.nombre}>{props.nombre}</p>
+            <p className={style.temps}>{props.temperamento}</p>
+            <p className={style.peso}>Peso: {props.peso} kg</p>
         </div>
     )
 };

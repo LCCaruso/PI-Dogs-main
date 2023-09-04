@@ -2,8 +2,8 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    border-radius: 15px;
-    border: 2px solid lightgreen;
+    border-radius: 5px;
+    /* border: 2px solid lightgreen; */
     padding: 8px;
-    background-color: lightseagreen;
+    background-color: rgb(167, 167, 143);
 }

@@ -1,9 +1,12 @@
 .contenedorDeCards {
+
+    padding-top: 50px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 2em;
+    gap: 4em;
     justify-content: center;
     align-items: center;
+    /* background-color: beige; */
 
 }
