@@ -21,8 +21,8 @@ const Detail = () => {
 
     return (
     <div>
-        <h1>Detail</h1>
         <Link to="/home">BACK</Link>
+        <h2>Detail</h2>
         <p>Id: {dog.id}</p>
         <p>Nombre: {dog.nombre}</p>
         <img src={dog.imagen} alt={dog.nombre}/>

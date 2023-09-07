@@ -4,14 +4,12 @@ import style from "./CardsContainer.module.css"
 
 const CardsContainer = () => {
 
-const dogs = useSelector(state=>state.dogs)
-
-
+const dogs = useSelector(state=>state.dogs);
 
     return (
         <div className={style.contenedorDeCards}>
             {dogs.map(dog=>{
-            return <Card id={dog.id} imagen={dog.imagen} nombre={dog.nombre} temperamento={dog.temperamento} peso={dog.peso}/>})};
+            return <Card key={dog.id} id={dog.id} imagen={dog.imagen} nombre={dog.nombre} temperamento={dog.temperamento} peso={dog.peso}/>})};
         </div>
     )
 };
