@@ -39,6 +39,7 @@ const cleanArrayDB = (arr) => {
 
 const cleanArrayByNameApi = (arr) => {
     const clean = arr.map(elem=>{
+        let años_de_vida = elem.life_span.replace(" years", "");
         return {
             id: elem.id,
             imagen: elem.image.url,
@@ -46,7 +47,7 @@ const cleanArrayByNameApi = (arr) => {
             altura: elem.height.metric,
             peso: elem.weight.metric,
             temperamento: elem.temperament,
-            años_de_vida: elem.life_span,
+            años_de_vida: años_de_vida,
             creado_DB: false
         };
     });
@@ -95,28 +96,6 @@ const getDogsById = async (id, source) => {
     return dog;
 };
 
-
-const createDogs = async (imagen, nombre, alturaMin, alturaMax, pesoMin, pesoMax, años_de_vidaMin, años_de_vidaMax, temperamento) => {
-    try {
-        if (!nombre) throw new Error("Ingrese el Nombre");
-        if (!alturaMin) throw new Error("Ingrese la Altura Minima");
-        if (!alturaMax) throw new Error("Ingrese la Altura Maxima");
-        if (!pesoMin) throw new Error("Ingrese el Peso Minimo");
-        if (!pesoMax) throw new Error("Ingrese el Peso Maximo");
-        if (!años_de_vidaMin) throw new Error("Ingrese Años de Vida Minimo");
-        if (!años_de_vidaMax) throw new Error("Ingrese Años de Vida Maximo");
-        if (!temperamento) throw new Error("Ingrese al menos 1 Temperamento");
-        
-        const newDog = await Dogs.create({ imagen, nombre, alturaMin, alturaMax, pesoMin, pesoMax, años_de_vidaMin, años_de_vidaMax, temperamento });
-        const temperamentsList = temperamento.split(', ');
-        const existingTemperaments = await findOrCreateTemperaments(temperamentsList);
-        await newDog.setTemperaments(existingTemperaments);
-        return newDog;
-    } catch (error) {
-        throw new Error(`${error.message}`);
-    }
-};
-
 const findOrCreateTemperaments = async (temperamentsList) => {
     const existingTemperaments = await Temperaments.findAll({
         where: { nombre: temperamentsList }
@@ -126,6 +105,16 @@ const findOrCreateTemperaments = async (temperamentsList) => {
     const createdTemperaments = await Temperaments.bulkCreate(newTemperaments.map(nombre => ({ nombre })));
     return [...existingTemperaments, ...createdTemperaments];
 };
+
+const createDogs = async (imagen, nombre, alturaMin, alturaMax, pesoMin, pesoMax, años_de_vidaMin, años_de_vidaMax, temperamento) => {
+
+        const newDog = await Dogs.create({ imagen, nombre, alturaMin, alturaMax, pesoMin, pesoMax, años_de_vidaMin, años_de_vidaMax, temperamento });
+        const temperamentsList = temperamento.split(', ');
+        const existingTemperaments = await findOrCreateTemperaments(temperamentsList);
+        await newDog.setTemperaments(existingTemperaments);
+        return newDog;
+ };
+
 
 
 

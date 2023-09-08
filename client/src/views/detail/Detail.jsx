@@ -29,7 +29,7 @@ const Detail = () => {
         <p>Altura: {dog.altura} cm</p>
         <p>Peso: {dog.peso} kg</p>
         <p>Temperamento: {dog.temperamento}</p>
-        <p>Años de vida: {dog.años_de_vida}</p>
+        <p>Años de vida: {dog.años_de_vida} años</p>
     </div>
     );
 };
