@@ -220,13 +220,13 @@
     justify-content: center;
     align-items: center;
     justify-items: center;
-    padding-left: 10px;
-    font-size: 14px;
+    padding-left: 6px;
+    font-size: 16px;
     background-color: rgb(215, 255, 178);
     font-family: Arial, Helvetica, sans-serif;
     color: black;
-    height: auto;
-    /* width: min-content; */
+    height: 22px;
+    width: auto;
     border-radius: 12px;
     opacity: 90%;
 }
@@ -236,6 +236,7 @@
 }
 
 .botonRemove{
+    align-content: center;
     justify-content: center;
     align-items: center;
     justify-items: center;
@@ -307,14 +308,31 @@
     cursor: pointer;
 }
 
-.back{
-    display: flex;
-    flex-direction: column;
-    background-color: rgb(0, 0, 0);
-    height: 20px;
-    width: 100px;
-    color: aliceblue;
-    border-radius: 20px;
-    border: 0px;
 
+.back{
+    color: rgb(90, 4, 4);
+    font-family: Arial, Helvetica, sans-serif;
+    padding-top: 14px;
+    align-items: right;
+    align-content: center;
+    text-align: center;
+    text-decoration: none;
+    margin-left: 910px;
+    font-size: 18px;
+    background-color: rgba(236, 219, 162, 0.9);
+    height: 30px;
+    width: 80px;
+    border-top-right-radius: 50px;
+    border-top-left-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.back:hover{
+    background-color: rgb(69, 255, 162);
+    color: black;
+}
+
+.select{
+    cursor: pointer;
 }

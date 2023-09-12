@@ -12,8 +12,8 @@
 }
 
 .contenedorFiltros{
-    background-color: rgba(54, 95, 95, 0.342);
-    height: 40px;
+    background-color: rgba(54, 95, 95, 0.164);
+    height: 55px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -40,4 +40,15 @@ button{
 button:hover{
     background-color: rgba(194, 75, 75, 0.699);
     color: beige;
+}
+
+.reset:hover{
+    background-color: blue;
+    color: aliceblue;
+}
+
+.select{
+    margin-left: 10px;
+    border-radius: 5px;
+    cursor: pointer;
 }

@@ -198,9 +198,9 @@ const Form = () => {
 
     return (
     <div className={style.body}>
-      <div className={style.back} >
-       <Link to="/home">BACK</Link>
-     </div>
+      <div className={style.back}>
+       <Link to="/home">HOME</Link>
+       </div>
     <form className={style.formContainer} onSubmit={submitHandler}>
 
         <div className={style.tituloNombre}>
@@ -288,7 +288,7 @@ const Form = () => {
         </div>
         <div className={style.containerGruposTemp}>
           
-          <select name="temperamentoSelect" onChange={(event) => addTemperamento(event.target.value)} value="">
+          <select className={style.select} name="temperamentoSelect" onChange={(event) => addTemperamento(event.target.value)} value="">
             <option value="" disabled>Seleccione un temperamento</option>
             {temperamentosDisponibles.map((temp, index) => (
               <option key={index} value={temp.nombre}>

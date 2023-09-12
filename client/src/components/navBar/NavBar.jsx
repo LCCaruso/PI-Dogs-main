@@ -10,7 +10,7 @@ const NavBar = ({handleChange, handleSubmit}) => {
             <Link className={style.link2} to="/home">HOME</Link>
             <Link className={style.link3} to="/create">CREAR DOG</Link>
             <form className={style.search} onChange={handleChange}>
-                <input placeholder="Busqueda" type="search"/>
+                <input className={style.busqueda} placeholder="Busqueda por Nombre" type="search"/>
                 <button className={style.button} type="submit" onClick={handleSubmit}>Buscar</button>
             </form>
 
