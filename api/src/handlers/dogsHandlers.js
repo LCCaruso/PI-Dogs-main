@@ -2,6 +2,22 @@ const { createDogs, getDogsById, getDogsByName, getAllDogs } = require("../contr
 require('dotenv').config();
 const { URL_BASE } = process.env;
 
+const imperialAkilo = (pesoString) => {
+    const numeros = pesoString.split(/ - | – /).map(Number);
+  
+    if (numeros.length === 1) {
+      // Si solo hay un número, lo convertimos y redondeamos
+      const kg = Math.round(numeros[0] / 2.2046);
+      return `${kg}`;
+    } else if (numeros.length === 2) {
+      // Si hay dos números, los convertimos y redondeamos
+      const kg1 = Math.round(numeros[0] / 2.2046);
+      const kg2 = Math.round(numeros[1] / 2.2046);
+      return `${kg1} - ${kg2}`;
+    }
+  };
+
+
 const getDogsHandler = async (req, res) => {
     const { name } = req.query;
     try{
@@ -11,6 +27,7 @@ const getDogsHandler = async (req, res) => {
         res.status(400).json({error: error.message})
     }
 };
+
 
 const getDogsByIdHandler = async (req, res) => {
     const { id } = req.params;
@@ -29,12 +46,13 @@ const getDogsByIdHandler = async (req, res) => {
         };
         if (source === "API") {
             let años_de_vida = dog.life_span.replace(" years", "");
+            let pesoFinal = imperialAkilo(dog.weight.imperial);
             results.imagen = `${URL_BASE}${dog.reference_image_id}.jpg`;
             results.nombre = dog.name;
             results.altura = dog.height ? dog.height.metric : null;
-            results.peso = dog.weight ? dog.weight.metric : null;
+            results.peso = pesoFinal;   //let en linea 48 para ejecutar la funcion q convierte a kilo
             results.temperamento = dog.temperament
-            results.años_de_vida = años_de_vida;
+            results.años_de_vida = años_de_vida; //let hecha para quitar el "years", linea 31
         }
         res.status(200).json(results);
     } catch (error) {

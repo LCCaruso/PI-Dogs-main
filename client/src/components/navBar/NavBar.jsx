@@ -6,12 +6,12 @@ const NavBar = ({handleChange, handleSubmit}) => {
     
     return (
         <div className={style.mainContainer}>
-
-            <Link to="/home">HOME</Link>
-            <Link to="/create">CREAR DOG</Link>
-            <form onChange={handleChange}>
+            <Link className={style.link1} to="/">LANDING</Link>
+            <Link className={style.link2} to="/home">HOME</Link>
+            <Link className={style.link3} to="/create">CREAR DOG</Link>
+            <form className={style.search} onChange={handleChange}>
                 <input placeholder="Busqueda" type="search"/>
-                <button type="submit" onClick={handleSubmit}>Buscar</button>
+                <button className={style.button} type="submit" onClick={handleSubmit}>Buscar</button>
             </form>
 
         </div>

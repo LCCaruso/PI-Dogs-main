@@ -1,12 +1,43 @@
 .contenedorDeCards {
 
-    padding-top: 50px;
+    padding-top: 30px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 4em;
+    gap: 3em;
     justify-content: center;
     align-items: center;
     /* background-color: beige; */
 
+}
+
+.contenedorFiltros{
+    background-color: rgba(54, 95, 95, 0.342);
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+
+}
+
+.paginado{
+    background-color: rgb(177, 129, 223);
+    color: aliceblue;
+    border-radius: 20px;
+}
+
+button{
+    padding: 5px;
+    margin: 10px;
+    border: 0px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover{
+    background-color: rgba(194, 75, 75, 0.699);
+    color: beige;
 }

@@ -1,0 +1,142 @@
+.detail{
+    display: flex;
+    flex-direction: column;
+    background-image: url("https://wallpapers.com/images/hd/neutral-color-background-1920-x-1080-gnm3dr6coxpbwoci.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    height: 50vw;
+    margin: -8px;
+}
+
+.contenedorGeneral{
+    margin-top: 50px;
+    margin-left: 215px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    background-image: url("https://static.vecteezy.com/system/resources/previews/011/618/094/non_2x/aesthetic-abstract-background-with-soft-pastel-color-organic-shapes-in-art-background-blob-liquid-background-with-soft-pastel-color-free-vector.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    /* height: 400px; */
+    width: 900px;
+    border-radius: 50px;
+    opacity: 0.9;
+    box-shadow: 20px 20px 20px rgba(63, 63, 63, 0.5);
+}
+
+.contenedorImagen{
+    display: flex;
+    flex-direction: row;
+}
+
+.imagen{
+    width: 550px;
+    height: fit-content;
+    border-radius: 40px;
+    border: 3px solid white;
+}
+
+.contenedorTitulos{
+    margin-top: -50px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 480px;
+
+}
+
+.id{
+    padding: 10px;
+    background-color: rgba(77, 216, 170, 0.8);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    height: auto;
+    width: auto;
+    opacity: 90%;
+}
+
+.nombre{    
+    padding: 10px;
+    background-color: rgba(97, 212, 2, 0.918);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    height: auto;
+    width: auto;
+    opacity: 90%;
+}
+
+.altura{
+    padding: 10px;
+    background-color: rgba(219, 168, 0, 0.815);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    height: auto;
+    width: auto;
+    opacity: 90%;
+}
+
+.peso{
+    padding: 10px;
+    background-color: rgba(76, 192, 47, 0.5);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    height: auto;
+    width: auto;
+    opacity: 90%;
+}
+
+.temperamento{
+    padding: 10px;
+    background-color: rgba(196, 84, 121, 0.5);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    height: auto;
+    width: auto;
+    opacity: 90%;
+}
+
+.años{
+    padding: 10px;
+    background-color: rgba(19, 93, 255, 0.5);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    height: auto;
+    width: auto;
+    opacity: 90%;
+}
+
+
+.link{
+    color: rgb(255, 255, 255);
+    font-family: Arial, Helvetica, sans-serif;
+    padding-top: 14px;
+    align-items: right;
+    align-content: center;
+    text-align: center;
+    text-decoration: none;
+    margin-left: 130px;
+    font-size: 18px;
+    background-color: rgba(158, 3, 248, 0.9);
+    height: 30px;
+    width: 80px;
+    border-top-right-radius: 50px;
+    border-top-left-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.link:hover{
+    background-color: rgb(69, 255, 162);
+    color: black;
+}

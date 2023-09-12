@@ -3,3 +3,7 @@
     background-size: cover;
     background-attachment: fixed;
 }
+
+.select{
+    display: flex;
+}

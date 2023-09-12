@@ -5,8 +5,24 @@ const axios = require("axios");
 const { Op } = require("sequelize");
 
 
+const imperialAkilo = (pesoString) => {
+    const numeros = pesoString.split(/ - | – /).map(Number);
+  
+    if (numeros.length === 1) {
+      // Si solo hay un número, lo convertimos y redondeamos
+      const kg = Math.round(numeros[0] / 2.2046);
+      return `${kg}`;
+    } else if (numeros.length === 2) {
+      // Si hay dos números, los convertimos y redondeamos
+      const kg1 = Math.round(numeros[0] / 2.2046);
+      const kg2 = Math.round(numeros[1] / 2.2046);
+      return `${kg1} - ${kg2}`;
+    }
+  };
+
 const cleanArray = (arr) => {
     const clean = arr.map(elem=>{
+        let pesoFinalElem = imperialAkilo(elem.weight.imperial);
         return {
             id: elem.id,
             imagen: elem.image.url,
@@ -14,7 +30,7 @@ const cleanArray = (arr) => {
             // altura: elem.height.metric,
             temperamento: elem.temperament,
             // años_de_vida: elem.life_span,
-            peso: elem.weight.metric,
+            peso: pesoFinalElem,
             // creado_DB: false
         };
     });
@@ -37,15 +53,18 @@ const cleanArrayDB = (arr) => {
     return clean;
 };
 
+
+
 const cleanArrayByNameApi = (arr) => {
     const clean = arr.map(elem=>{
         let años_de_vida = elem.life_span.replace(" years", "");
+        let pesoFinalElem = imperialAkilo(elem.weight.imperial);
         return {
             id: elem.id,
             imagen: elem.image.url,
             nombre: elem.name,
             altura: elem.height.metric,
-            peso: elem.weight.metric,
+            peso: pesoFinalElem,
             temperamento: elem.temperament,
             años_de_vida: años_de_vida,
             creado_DB: false

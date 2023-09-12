@@ -6,4 +6,82 @@
     /* border: 2px solid lightgreen; */
     padding: 8px;
     background-color: rgb(167, 167, 143);
+    height: 20PX;
+}
+
+.search{
+    margin-top: -12px;
+}
+
+.link1{
+    background-color: rgb(235, 227, 186);
+    color: rgb(35, 149, 248);
+    text-decoration: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    height: 20px;
+    border-radius: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.link2{
+    background-color: rgb(235, 227, 186);
+    color: rgb(35, 149, 248);
+    text-decoration: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    height: 20px;
+    border-radius: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.link3{
+    background-color: rgb(235, 227, 186);
+    color: rgb(35, 149, 248);
+    text-decoration: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    height: 20px;
+    border-radius: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.link1:hover{
+    background-color: beige;
+    color: black;
+    height: 20px;
+    border-radius: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.link2:hover{
+    background-color: beige;
+    color: black;
+    height: 20px;
+    border-radius: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.link3:hover{
+    background-color: beige;
+    color: black;
+    height: 20px;
+    border-radius: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.button{
+    border: 0px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.button:hover{
+    background-color: antiquewhite;
+    color: black;
 }

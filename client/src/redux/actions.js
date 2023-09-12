@@ -6,7 +6,14 @@ export const GET_DOG = "GET_DOG";
 export const GET_BY_NAME = "GET_BY_NAME";
 export const GET_TEMPERAMENTS = "GET_TEMPERAMENTS";
 export const CREATE_DOG = "CREATE_DOG";
-// export const FILTER_BY_SOURCE = "FILTER_BY_SOURCE";
+export const FILTER_BY_TEMPERAMENT = "FILTER_BY_TEMPERAMENT";
+export const FILTER_BY_SOURCE = "FILTER_BY_SOURCE"; // todavia no lo hago
+export const PAGINATE = "PAGINATE";
+export const ORDEN_AZ = "ORDEN_AZ";
+export const ORDEN_PESO = "ORDEN_PESO";
+export const FILTER_PESO = "FILTER_PESO";
+export const RESET = "RESET";
+export const FILTER_API_DB = "FILTER_API_DB";
 
 
 
@@ -66,6 +73,85 @@ export const getTemperaments = () => {
 };
 
 
-// export const filteredBySource = () => {
-//     dispatch({type: "FILTER_BY_SOURCE"});
-// };
+export const filterByTemperament = (temperamento) => {
+    return async function (dispatch){
+        try{
+            dispatch({type: FILTER_BY_TEMPERAMENT, payload: temperamento});
+        } catch (error){
+            console.log(error.message)
+        }
+    };
+};
+
+
+export const filterBySource = (temperamento) => {
+    return async function (dispatch){
+        try{
+            dispatch({type: FILTER_BY_SOURCE, payload: temperamento});
+        } catch (error){
+            console.log(error.message)
+        }
+    };
+};
+
+export const page = (order) => {
+    return async function (dispatch){
+        try{
+            dispatch({type: PAGINATE, payload: order});
+        } catch (error){
+            console.log(error.message)
+        }
+    };
+};
+
+
+export const dogOrdenAz = (order) => {
+    return async function (dispatch){
+        try{
+            dispatch({type: ORDEN_AZ, payload: order});
+        } catch (error){
+            console.log(error.message)
+        }
+    };
+};
+
+export const dogOrdenPeso = (order) => {
+    return async function (dispatch){
+        try{
+            dispatch({type: ORDEN_PESO, payload: order});
+        } catch (error){
+            console.log(error.message)
+        }
+    };
+};
+
+export const dogFilterPeso = (order) => {
+    return async function (dispatch){
+        try{
+            dispatch({type: FILTER_PESO, payload: order});
+        } catch (error){
+            console.log(error.message)
+        }
+    };
+};
+
+export const resetDogs = () => {
+    return async function (dispatch){
+        try {
+            dispatch({ type: RESET });
+        } catch (error) {
+            console.log(error.message);
+        }
+    };
+};
+
+
+export const dogFilterApiDb = (order) => {
+    return async function (dispatch){
+        try{
+            dispatch({type: FILTER_API_DB, payload: order});
+        } catch (error){
+            console.log(error.message)
+        }
+    };
+};

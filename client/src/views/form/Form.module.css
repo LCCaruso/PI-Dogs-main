@@ -1,0 +1,320 @@
+.body{
+    background-image: url("https://wallpaper.dog/large/5439050.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 48vw;
+    margin: -10px;
+}
+
+.formContainer {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    margin-left: 700px;
+    margin-top: 10px;
+    height:auto;
+    width: 500px;
+    text-align: center;
+    border-radius: 30px;
+    opacity: 75%;
+    box-shadow: 20px 20px 20px black;
+}
+
+.spanErrors{
+    /* display: flex;
+    flex-direction: column; */
+    background-color: rgb(255, 255, 255);
+    color: red;
+    font-size: 16px;
+    padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    opacity: 100%;
+}
+
+.rangos{
+    width: 190px;
+    cursor: pointer;
+}
+
+.tituloNombre{
+    justify-content: center;
+    text-align: center;
+    background-color: rgb(216, 22, 22);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    height: auto;
+    width: auto;
+    opacity: 80%;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+}
+
+.nombreContainer{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    padding: 10px;
+    height: 35px;
+    width: auto;
+    background: rgba(224, 147, 147, 0.4);
+}
+
+.inputNombre{
+    padding: 5px;
+    text-align: center;
+    width: 300px;
+    border-radius: 10px;
+    border: 0px;
+    font-size: 20px;
+}
+
+.tituloAltura{
+    justify-content: center;
+    text-align: center;
+    background-color: rgb(219, 168, 0);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    height: auto;
+    width: auto;
+    opacity: 80%;
+}
+
+.containerGrupos{
+    display: flex;
+    flex-direction: row;
+}
+
+.alturaMinmaxContainer{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgb(119, 0, 93);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    padding: 10px;
+    height: 40px;
+    width: auto;
+    background-color: rgb(250, 239, 192);
+}
+
+.spanNumeros{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 40px;
+    width: 75px;
+    padding: 10px;
+    background-color: rgb(255, 255, 255);
+    color: green;
+    font-size: 16px;
+}
+
+.tituloPeso{
+    justify-content: center;
+    text-align: center;
+    background-color: rgb(76, 192, 47);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    height: auto;
+    width: auto;
+    opacity: 80%;
+}
+
+.pesoMinmaxContainer{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgb(119, 0, 93);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    padding: 10px;
+    height: 40px;
+    width: auto;
+    background: rgb(171, 255, 137);
+}
+
+.tituloAñosDeVida{
+    justify-content: center;
+    text-align: center;
+    background-color: rgb(19, 93, 255);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    height: auto;
+    width: auto;
+    opacity: 80%;
+}
+
+.años_de_vidaMinmaxContainer{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgb(119, 0, 93);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    padding: 10px;
+    height: 40px;
+    width: auto;
+    background: rgb(130, 229, 247);
+}
+
+.tituloTemperamento{
+    justify-content: center;
+    text-align: center;
+    background-color: rgb(165, 0, 55);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    height: auto;
+    width: auto;
+    opacity: 80%;
+}
+
+.containerGruposTemp{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(233, 176, 195);
+    padding-top: 15px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    width: 490px;
+    
+}
+
+.temperamentoSeleccionadoContainer{
+    /* width: 480px; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    padding-top: 8px;
+    /* background-color: black; */
+    width: 480px;
+}
+
+.temperamentoSeleccionado{
+    /* display: flex;
+    flex-direction: row; */
+    padding-left: 10px;
+    padding-bottom: 5px;
+    /* background-color: blue; */
+    width: min-content;
+}
+
+.temperamentoSpan{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    padding-left: 10px;
+    font-size: 14px;
+    background-color: rgb(215, 255, 178);
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    height: auto;
+    /* width: min-content; */
+    border-radius: 12px;
+    opacity: 90%;
+}
+
+.temperamentoSpan:hover{
+    background-color: rgb(255, 255, 255);
+}
+
+.botonRemove{
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    height: 20px;
+    width: 20px;
+    margin-left: 8px;
+    border: 0px;
+    border-radius: 20px;
+    background-color: rgb(134, 134, 134);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.botonRemove:hover{
+    background-color: rgb(255, 0, 0);
+}
+
+.tituloImagen{
+    justify-content: center;
+    text-align: center;
+    background-color: rgb(187, 0, 115);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    height: auto;
+    width: auto;
+    opacity: 80%;
+}
+
+.imagenContainer{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    padding-top: 10px;
+    height: 40px;
+    width: auto;
+    background-color: rgba(255, 155, 242, 0.4);
+}
+
+.inputImagen{
+    padding: 5px;
+    text-align: center;
+    width: 250px;
+    height: 20px;
+    border-radius: 10px;
+    border: 0px;
+    font-size: 16px;
+}
+
+.submitButton{
+    text-align: center;
+    background-color: green;
+    color: aliceblue;
+    font-size: 20px;
+    padding: 5px;
+    width: auto;
+    height: auto;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border: 0px;
+    transition: background-color 0.3s;
+}
+
+.submitButton:hover{
+    background-color: white;
+    color: green;
+    cursor: pointer;
+}
+
+.back{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(0, 0, 0);
+    height: 20px;
+    width: 100px;
+    color: aliceblue;
+    border-radius: 20px;
+    border: 0px;
+
+}
