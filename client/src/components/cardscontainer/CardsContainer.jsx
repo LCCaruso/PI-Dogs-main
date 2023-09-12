@@ -37,6 +37,7 @@ useEffect(() => {
     });
 }, []);
 
+
 const handleFilters = (event) => {
     setSelectedTemperamento(event.target.value);
     dispatch(filterByTemperament(event.target.value));

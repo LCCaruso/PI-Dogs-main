@@ -1,6 +1,6 @@
 // el reducer es el unico q modifica el estado global
 
-import { FILTER_API_DB, RESET, GET_DOGS, GET_BY_NAME, GET_DOG, GET_TEMPERAMENTS, CREATE_DOG, FILTER_BY_TEMPERAMENT, PAGINATE, ORDEN_AZ, ORDEN_PESO, FILTER_PESO } from "./actions";
+import { RESET_DETAIL, FILTER_API_DB, RESET, GET_DOGS, GET_BY_NAME, GET_DOG, GET_TEMPERAMENTS, CREATE_DOG, FILTER_BY_TEMPERAMENT, PAGINATE, ORDEN_AZ, ORDEN_PESO, FILTER_PESO } from "./actions";
 
 const initialState = {
     dogs: [],
@@ -36,7 +36,7 @@ const rootReducer = (state = initialState, action) => {
         case CREATE_DOG:
             return { ...state, dog: action.payload };
         case GET_BY_NAME:
-            return { 
+                return { 
                 ...state, 
                 dogs: [...action.payload].splice(0, 8) ,
                 dogsFiltered: action.payload,
@@ -58,21 +58,29 @@ const rootReducer = (state = initialState, action) => {
             const first_index = action.payload === "next" ? next_page * 8 : prev_page * 8;
 
             if (state.filters) {
+                
                 if (action.payload === "next" && first_index >= state.dogsFiltered.length) return state;
                 else if (action.payload === "prev" && prev_page < 0) return state;
+                
                 return { ...state, 
                     dogs: [...state.dogsFiltered].splice(first_index, 8), 
                     currentPage: action.payload === "next" ? next_page : prev_page 
                 };
             }
 
-            if (action.payload === "next" && first_index >= state.dogsBackUp.length) return state;
-            else if (action.payload === "prev" && prev_page < 0) return state;
+                if (action.payload === "next" && first_index >= state.dogsBackUp.length) return state;
+                else if (action.payload === "prev" && prev_page < 0) return state;
 
-            return { ...state, 
-                dogs: [...state.dogsBackUp].splice(first_index, 8), 
-                currentPage: action.payload === "next" ? next_page : prev_page 
+                return { ...state, 
+                    dogs: [...state.dogsBackUp].splice(first_index, 8), 
+                    currentPage: action.payload === "next" ? next_page : prev_page 
             };
+        case RESET_DETAIL:
+                return {
+                  ...state,
+                  dog: null,
+                };
+          
         case ORDEN_AZ:
             switch (action.payload) {
                 case "A-Z":
@@ -145,7 +153,8 @@ const rootReducer = (state = initialState, action) => {
                             ...state,
                             dogs: [...ap].splice(0, 8),
                             dogsFiltered: ap,
-                            currentPage: 0
+                            currentPage: 0,
+                            filters: true
                         };
                     case "db":
                         let dat = [];
@@ -158,7 +167,8 @@ const rootReducer = (state = initialState, action) => {
                             ...state,
                             dogs: [...dat].splice(0, 8),
                             dogsFiltered: dat,
-                            currentPage: 0
+                            currentPage: 0,
+                            filters: true
                         };
                     default:
                         return state;
@@ -224,14 +234,22 @@ const rootReducer = (state = initialState, action) => {
                     return state;
             }
         case FILTER_PESO:
-            let menor = [...state.dogsBackUp].filter((dog) => pesoPromedio(dog.peso) < 10);
+            if(state.filters){
+            let menor = [...state.dogsFiltered].filter((dog) => pesoPromedio(dog.peso) < 10);
             return {
                 ...state,
                 dogs: [...menor].splice(0, 8),
                 dogsFiltered: menor,
                 currentPage: 0,
                 filters: true
-            };
+            }} else{
+            let menor = [...state.dogsBackUp].filter((dog) => pesoPromedio(dog.peso) < 10);
+            return {
+                ...state,
+                dogs: [...menor].splice(0, 8),
+                dogsBackUp: menor,
+                currentPage: 0,
+            }};
 
         case RESET:
             return {

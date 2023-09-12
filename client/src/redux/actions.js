@@ -14,7 +14,7 @@ export const ORDEN_PESO = "ORDEN_PESO";
 export const FILTER_PESO = "FILTER_PESO";
 export const RESET = "RESET";
 export const FILTER_API_DB = "FILTER_API_DB";
-
+export const RESET_DETAIL = "RESET_DETAIL";
 
 
 
@@ -150,6 +150,16 @@ export const dogFilterApiDb = (order) => {
     return async function (dispatch){
         try{
             dispatch({type: FILTER_API_DB, payload: order});
+        } catch (error){
+            console.log(error.message)
+        }
+    };
+};
+
+export const resetSelectedDog = (order) => {
+    return async function (dispatch){
+        try{
+            dispatch({type: RESET_DETAIL, payload: order});
         } catch (error){
             console.log(error.message)
         }

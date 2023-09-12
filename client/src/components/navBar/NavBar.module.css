@@ -6,8 +6,8 @@
     justify-content: center;
     /* border: 2px solid lightgreen; */
     padding: 8px;
-    background-color: rgb(167, 167, 143);
-    height: 20PX;
+    background-color: rgba(102, 102, 88, 0.486);
+    height: 30PX;
 }
 
 .search{
@@ -91,9 +91,14 @@
 }
 
 .busqueda{
-
+    width: 200px;
+    height: 20px;
     margin-top: 25px;
     margin-left: 250px;
     border-radius: 5px;
     border: 0px;
+    font-size: 16px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 200;
+    padding-left: 10px;
 }

@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import style from "./Card.module.css"
 
+
 const Card = (props) => {
+
+
 
     return (
         <div className={style.contenedor}>

@@ -7,8 +7,10 @@ import NavBar from "../../components/navBar/NavBar";
 
 
 const Home = () => {
+
     const dispatch = useDispatch();
     
+ 
     const [searchString, setSearchString] = useState("");
     
       
@@ -22,7 +24,6 @@ const Home = () => {
         dispatch(getByName(searchString))
     }
     
-
     return (
     <div className={style.home}>
         <NavBar handleChange={handleChange} handleSubmit={handleSubmit}/>

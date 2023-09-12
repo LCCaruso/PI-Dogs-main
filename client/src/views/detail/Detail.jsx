@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { getDog } from "../../redux/actions";
+import { getDog, resetSelectedDog } from "../../redux/actions";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
@@ -12,18 +12,17 @@ const Detail = () => {
 
     useEffect(()=>{
         dispatch(getDog(id));
-        return()=>{
-            console.log("se desmonto el componente")
-        }
+        return () => {
+            dispatch(resetSelectedDog());
+          };
     },[dispatch,id]);
-
 
 
     const dog = useSelector((state)=>state.dog)
 
     if (!dog) {
-        return <p>Cargando...</p>;
-    }
+        return <div className={style.carga}><img src="https://static.vecteezy.com/system/resources/thumbnails/008/034/405/small/loading-bar-doodle-element-hand-drawn-vector.jpg" alt="Cargando..."/></div>}
+    
 
     
     // const imperialAkilo = (pesoString) => {
@@ -42,8 +41,6 @@ const Detail = () => {
 
     //   – o -
         // console.log(imperialAkilo(dog.peso))
-
-      
     return (
     <div className={style.detail}>
         <div className={style.contenedorGeneral}>
