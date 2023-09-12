@@ -2,7 +2,7 @@
     background-image: url("https://wallpaper.dog/large/5439050.jpg");
     background-size: cover;
     background-position: center;
-    height: 48vw;
+    height: 52vw;
     margin: -10px;
 }
 
@@ -12,6 +12,7 @@
     flex-direction: column;
     margin-left: 700px;
     margin-top: 10px;
+    margin-top: 5px;
     height:auto;
     width: 500px;
     text-align: center;

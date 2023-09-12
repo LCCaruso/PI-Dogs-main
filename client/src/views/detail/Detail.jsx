@@ -12,7 +12,12 @@ const Detail = () => {
 
     useEffect(()=>{
         dispatch(getDog(id));
+        return()=>{
+            console.log("se desmonto el componente")
+        }
     },[dispatch,id]);
+
+
 
     const dog = useSelector((state)=>state.dog)
 
@@ -48,7 +53,7 @@ const Detail = () => {
         <div className={style.contenedorTitulos}>
         <Link className={style.link} to="/home">HOME</Link>
             <label className={style.id}>ID: {dog.id}</label>
-            <label className={style.nombre}>NOMBRE: {dog.nombre}</label>
+            <label className={style.nombre}>Nombre: {dog.nombre}</label>
             <label className={style.altura}>Altura: {dog.altura} cm</label>
             <label className={style.peso}>Peso: {dog.peso} kg</label>
             <label className={style.temperamento}>Temperamento: {dog.temperamento}</label>

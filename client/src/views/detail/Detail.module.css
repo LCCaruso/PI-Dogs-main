@@ -55,10 +55,15 @@
     background-color: rgba(77, 216, 170, 0.8);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 20px;
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     height: auto;
     width: auto;
-    opacity: 90%;
+    opacity: 80%;
+    transition: background-color 0.4s;
+}
+
+.id:hover{
+    background-color: rgb(14, 235, 161);;
 }
 
 .nombre{    
@@ -66,10 +71,15 @@
     background-color: rgba(97, 212, 2, 0.918);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 20px;
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     height: auto;
     width: auto;
-    opacity: 90%;
+    opacity: 80%;
+    transition: background-color 0.4s;
+}
+
+.nombre:hover{
+    background-color: rgb(139, 255, 43);
 }
 
 .altura{
@@ -77,10 +87,15 @@
     background-color: rgba(219, 168, 0, 0.815);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 20px;
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     height: auto;
     width: auto;
-    opacity: 90%;
+    opacity: 80%;
+    transition: background-color 0.4s;
+}
+
+.altura:hover{
+    background-color: rgba(255, 240, 103, 0.815)
 }
 
 .peso{
@@ -88,10 +103,15 @@
     background-color: rgba(76, 192, 47, 0.5);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 20px;
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     height: auto;
     width: auto;
-    opacity: 90%;
+    opacity: 80%;
+    transition: background-color 0.4s;
+}
+
+.peso:hover{
+    background-color: rgb(130, 255, 98);
 }
 
 .temperamento{
@@ -99,10 +119,15 @@
     background-color: rgba(196, 84, 121, 0.5);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 20px;
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     height: auto;
     width: auto;
-    opacity: 90%;
+    opacity: 80%;
+    transition: background-color 0.4s;
+}
+
+.temperamento:hover{
+    background-color: rgb(243, 72, 129)
 }
 
 .años{
@@ -110,12 +135,16 @@
     background-color: rgba(19, 93, 255, 0.5);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 20px;
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     height: auto;
     width: auto;
-    opacity: 90%;
+    opacity: 80%;
+    transition: background-color 0.4s;
 }
 
+.años:hover{
+    background-color: rgb(75, 126, 236);
+}
 
 .link{
     color: rgb(255, 255, 255);

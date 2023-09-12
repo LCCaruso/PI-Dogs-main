@@ -51,4 +51,5 @@ button:hover{
     margin-left: 10px;
     border-radius: 5px;
     cursor: pointer;
+    width: 200px;
 }

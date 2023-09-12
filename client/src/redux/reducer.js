@@ -14,8 +14,7 @@ const initialState = {
 
 const pesoPromedio = (pesoString) => {
     const numeros = pesoString.split(/ - | – /).map(Number);
-  
-    if (numeros.length === 1) {
+      if (numeros.length === 1) {
       // Si solo hay un número, retornamos ese número
       return numeros[0];
     } else if (numeros.length === 2) {
@@ -27,7 +26,9 @@ const pesoPromedio = (pesoString) => {
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_DOGS:
-            return { ...state, dogs: [...action.payload].splice(0, 8), dogsBackUp: action.payload };
+            return { ...state, 
+                dogs: [...action.payload].splice(0, 8), 
+                dogsBackUp: action.payload };
         case GET_DOG:
             return { ...state, dog: action.payload };
         case GET_TEMPERAMENTS:
@@ -35,7 +36,13 @@ const rootReducer = (state = initialState, action) => {
         case CREATE_DOG:
             return { ...state, dog: action.payload };
         case GET_BY_NAME:
-            return { ...state, dogs: action.payload };
+            return { 
+                ...state, 
+                dogs: [...action.payload].splice(0, 8) ,
+                dogsFiltered: action.payload,
+                currentPage: 0,
+                filters: true
+            };
         case FILTER_BY_TEMPERAMENT:
             let temp = [...state.dogsBackUp].filter(dog => dog.temperamento && action.payload && dog.temperamento.includes(action.payload))
             return { 
