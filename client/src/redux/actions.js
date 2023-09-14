@@ -16,6 +16,9 @@ export const FILTER_API_DB = "FILTER_API_DB";
 export const RESET_DETAIL = "RESET_DETAIL";
 export const DETAIL_PAGE = "DETAIL_PAGE";
 export const BACK_TO_PREVIOUS_PAGE = "BACK_TO_PREVIOUS_PAGE";
+export const ADD_FAV = "ADD_FAV";
+export const REMOVE_FAV = "REMOVE_FAV";
+export const DOG_FAVS = "DOG_FAVS";
 // export const ULTIMO_ESTADO = "ULTIMO_ESTADO";
 
 
@@ -44,7 +47,8 @@ export const getByName = (name) => {
             const dogs = dogsData.data;
             dispatch({type: GET_BY_NAME, payload: dogs});
         } catch (error){
-            console.log("error en devolver la action", error.message)
+            alert(error.response.data.error)
+            // console.log("error en devolver la action", error.message)
         }
     };
 };
@@ -174,6 +178,38 @@ export const getBackPreviousPage = (order) => {
     return async function (dispatch){
         try{
             dispatch({type: BACK_TO_PREVIOUS_PAGE, payload: order});
+        } catch (error){
+            console.log(error.message)
+        }
+    };
+};
+
+
+export const addFav = (dog) => {
+    return async function (dispatch){
+        try{
+            dispatch({type: ADD_FAV, payload: dog});
+        } catch (error){
+            console.log(error.message)
+        }
+    };
+};
+
+
+export const removeFav = (id) => {
+    return async function (dispatch){
+        try{
+            dispatch({type: REMOVE_FAV, payload: id});
+        } catch (error){
+            console.log(error.message)
+        }
+    };
+};
+
+export const dogFavs = () => {
+    return async function (dispatch){
+        try{
+            dispatch({type: DOG_FAVS, payload: "favorites"});
         } catch (error){
             console.log(error.message)
         }

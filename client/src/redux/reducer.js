@@ -1,6 +1,6 @@
 // el reducer es el unico q modifica el estado global
 
-import { BACK_TO_PREVIOUS_PAGE, DETAIL_PAGE, RESET_DETAIL, FILTER_API_DB, RESET, GET_DOGS, GET_BY_NAME, GET_DOG, GET_TEMPERAMENTS, CREATE_DOG, FILTER_BY_TEMPERAMENT, PAGINATE, ORDEN_AZ, ORDEN_PESO, FILTER_PESO } from "./actions";
+import { DOG_FAVS, ADD_FAV, REMOVE_FAV, BACK_TO_PREVIOUS_PAGE, DETAIL_PAGE, RESET_DETAIL, FILTER_API_DB, RESET, GET_DOGS, GET_BY_NAME, GET_DOG, GET_TEMPERAMENTS, CREATE_DOG, FILTER_BY_TEMPERAMENT, PAGINATE, ORDEN_AZ, ORDEN_PESO, FILTER_PESO } from "./actions";
 
 const initialState = {
     dogs: [],
@@ -10,7 +10,8 @@ const initialState = {
     dogsFiltered: [],
     filters: false, //si hay un filtro aplicado, paginar sobre ese filtro, si no hay filtro aplicado, paginas sobre todos los perros
     currentPage: 0,
-    previousPage: 0
+    previousPage: 0,
+    myFavorites: []
 };
 
 const pesoPromedio = (pesoString) => {
@@ -26,7 +27,7 @@ const pesoPromedio = (pesoString) => {
 
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
-            case GET_DOGS:
+        case GET_DOGS:
                 if (state.filters || state.dogsBackUp.length > 0) {
                     return {
                         ...state,
@@ -55,7 +56,39 @@ const rootReducer = (state = initialState, action) => {
                 currentPage: 0,
                 filters: true
             };
-
+        case ADD_FAV:
+                return {
+                    ...state,
+                    myFavorites: [...state.myFavorites, action.payload]
+                }
+        case REMOVE_FAV:
+                return {
+                    ...state,
+                    myFavorites: state.myFavorites.filter((fav) => fav.id !== action.payload),
+                }
+        case DOG_FAVS:
+            if (action.payload === "favorites") {
+                // filtra los perros que estan en la lista de favoritos, pasada por payload en la action
+                const favs = state.dogsBackUp.filter((dog) =>
+                    state.myFavorites.some((fav) => fav.id === dog.id)
+                );
+                    return {
+                    ...state,
+                    dogs: [...favs].splice(0, 8),
+                    dogsFiltered: favs,
+                    currentPage: 0,
+                    filters: true,
+                };
+            } else {
+                // restablece el filtro para mostrar todos los perros
+                return {
+                    ...state,
+                    dogs: [...state.dogsBackUp].splice(0, 8),
+                    dogsFiltered: [],
+                    currentPage: 0,
+                    filters: false,
+                };
+            }
         case FILTER_BY_TEMPERAMENT:
             let temp = []
             if (state.filters) {
@@ -104,14 +137,13 @@ const rootReducer = (state = initialState, action) => {
             };
 
         case BACK_TO_PREVIOUS_PAGE: 
-        if (!state.filters) {
+        if (!state.filters) {   //si no hay filtros se actualiza el estado de la pagina actual
             return {
                 ...state,
-                dogs: [...state.dogsBackUp].splice(state.previousPage * 8, 8), // Carga la última página visitada
-                currentPage: state.previousPage, // Regresa a la última página visitada
+                dogs: [...state.dogsBackUp].splice(state.previousPage * 8, 8), // carga los perros de la ultima pagina visitada
+                currentPage: state.previousPage, // vuelvea la ultima pagina visitada
             };
         }
-        // Si hay filtros, deja que el flujo actual maneje el cambio de página
         return state;
         case RESET_DETAIL:
                 return {

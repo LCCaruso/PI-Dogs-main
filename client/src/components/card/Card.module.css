@@ -3,9 +3,21 @@
     width: 250px;
     text-align: center;
     transition: animation 0.2s;
-
-
 }
+
+.imagenContenedor{
+    position: relative;
+}
+
+.corazon{
+    background-color: rgba(0, 0, 0, 0);
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    z-index: 1;
+    
+}
+
 
 .imagen{
     width: 250px;

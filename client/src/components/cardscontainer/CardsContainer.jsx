@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import Card from "../card/Card";
 import style from "./CardsContainer.module.css"
-import { filterByTemperament, getDogs, dogOrdenAz, page, dogOrdenPeso, dogFilterPeso, resetDogs, dogFilterApiDb } from "../../redux/actions";
+import { dogFavs, filterByTemperament, getDogs, dogOrdenAz, page, dogOrdenPeso, dogFilterPeso, resetDogs, dogFilterApiDb } from "../../redux/actions";
 import axios from "axios";
 
 const CardsContainer = () => {
@@ -69,6 +69,10 @@ const filterApiDb = (event) => {
     dispatch(dogFilterApiDb(event.target.name))
 }
 
+const soloFav = () => {
+    dispatch(dogFavs())
+}
+
 
     return (
         
@@ -89,7 +93,8 @@ const filterApiDb = (event) => {
                     ))}
                 </select>
                 </div>
-                <button name="menor" onClick={filterPeso}>{"Filtro Peso < 10"}</button>
+                <button name="favs" onClick={soloFav}>Favoritos</button>
+                <button name="menor" onClick={filterPeso}>{"Peso < 10"}</button>
                 <button name="api" onClick={filterApiDb}>Api</button>
                 <button name="db" onClick={filterApiDb}>Base de Datos</button>
                 <button className={style.reset} onClick={reset}>RESET</button>

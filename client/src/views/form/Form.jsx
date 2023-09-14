@@ -12,12 +12,12 @@ const Form = () => {
     const [form, setForm] = useState({    
       //setForm es la funcion que puede modificar el estado, en realidad agrega la info que ingresa el cliente en los inputs
         nombre: "",
-        alturaMin: "",
-        alturaMax: "",
-        pesoMin: "",
-        pesoMax: "",
-        años_de_vidaMin: "",
-        años_de_vidaMax: "",
+        alturaMin: "3",
+        alturaMax: "2",
+        pesoMin: "3",
+        pesoMax: "2",
+        años_de_vidaMin: "3",
+        años_de_vidaMax: "2",
         temperamento: [],
         imagen: "",
     });
@@ -196,7 +196,7 @@ const Form = () => {
             <label>NOMBRE</label>
         </div>
         <div className={style.nombreContainer}>
-            <input className={style.inputNombre} type="text" value={form.nombre} onChange={changeHandler} name="nombre" placeholder="ingrese nombre del perro"></input>
+            <input className={style.inputNombre} type="text" value={form.nombre} onChange={changeHandler} name="nombre" placeholder="ej: Roco"></input>
         </div>
           <div className={style.spanErrors}>
             <span>{error.nombre}</span>
@@ -290,7 +290,8 @@ const Form = () => {
         <div className={style.temperamentoSeleccionadoContainer}>
           {form.temperamento.map((temp, index) => (
             <div key={index} className={style.temperamentoSeleccionado}>
-                <span className={style.temperamentoSpan}>{temp}<button className={style.botonRemove} type="button" onClick={() => removeTemperamento(index)}>x</button></span>
+                <span className={style.temperamentoSpan}>{temp}
+                <button className={style.botonRemove} type="button" onClick={() => removeTemperamento(index)}>x</button></span>
             </div>
           ))}
         </div>

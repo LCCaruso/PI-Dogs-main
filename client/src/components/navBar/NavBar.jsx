@@ -1,8 +1,25 @@
 import { Link } from "react-router-dom";
 import style from "./NavBar.module.css";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { getByName } from "../../redux/actions";
 
+const NavBar = () => {
+      
+ 
+    const [searchString, setSearchString] = useState("");
+    
+    const dispatch = useDispatch();
+      
+    const handleChange = (event) => {
+        event.preventDefault();
+        setSearchString(event.target.value);
+    }
 
-const NavBar = ({handleChange, handleSubmit}) => {
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        dispatch(getByName(searchString))
+    }
     
     return (
         <div className={style.mainContainer}>
@@ -13,7 +30,6 @@ const NavBar = ({handleChange, handleSubmit}) => {
                 <input className={style.busqueda} placeholder="Busqueda por Nombre" type="search"/>
                 <button className={style.button} type="submit" onClick={handleSubmit}>Buscar</button>
             </form>
-
         </div>
     )
 };

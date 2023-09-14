@@ -1,12 +1,31 @@
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import style from "./Card.module.css"
-import { useDispatch } from "react-redux";
-import { getDetailPage } from "../../redux/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { getDetailPage, addFav, removeFav } from "../../redux/actions";
+import { useEffect, useState } from "react";
 
 
 const Card = (props) => {
 
 const dispatch = useDispatch();
+const myFavorites = useSelector((state)=> state.myFavorites);
+const [isFav, setIsFav] = useState(false);
+
+useEffect(()=>{
+    const isDogFav = myFavorites.some((fav) => fav.id === props.id);
+    setIsFav(isDogFav)
+},[myFavorites, props.id]);
+
+
+const handleFav = (id) => {
+    if(isFav){
+        setIsFav(false)
+        dispatch(removeFav(id));
+    } else{
+        setIsFav(true)
+        dispatch(addFav(props))
+    }
+};
 
 const detailPage = (event) => {
     dispatch(getDetailPage(event.target.name))
@@ -14,9 +33,12 @@ const detailPage = (event) => {
 
     return (
         <div className={style.contenedor}>
+            <div className={style.imagenContenedor}>
+            <button className={style.corazon} onClick={() => handleFav(props.id)}>{isFav ? "❤️" : "🤍"}</button>
             <Link onClick={detailPage} to={`/detail/${props.id}`}>
             <img className={style.imagen} src={props.imagen} alt={props.nombre} />
-            </Link>        
+            </Link>   
+            </div>
             <p className={style.nombre}>{props.nombre}</p>
             <p className={style.temps}>{props.temperamento}</p>
             <p className={style.peso}>Peso: {props.peso} kg</p>

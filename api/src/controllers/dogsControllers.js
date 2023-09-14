@@ -9,11 +9,11 @@ const imperialAkilo = (pesoString) => {
     const numeros = pesoString.split(/ - | – /).map(Number);
   
     if (numeros.length === 1) {
-      // Si solo hay un número, lo convertimos y redondeamos
+      // si solo hay un nuumero lo convertimos y redondeamos
       const kg = Math.round(numeros[0] / 2.2046);
       return `${kg}`;
     } else if (numeros.length === 2) {
-      // Si hay dos números, los convertimos y redondeamos
+      // y si hay dos numeros los convertimos y redondeamos
       const kg1 = Math.round(numeros[0] / 2.2046);
       const kg2 = Math.round(numeros[1] / 2.2046);
       return `${kg1} - ${kg2}`;
