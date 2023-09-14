@@ -291,23 +291,23 @@
 
 .submitButton{
     text-align: center;
-    background-color: green;
-    color: aliceblue;
+    /* background-color: green; */
+    /* color: aliceblue; */
     font-size: 20px;
     padding: 5px;
     width: auto;
-    height: auto;
+    height: 30px;
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
     border: 0px;
-    transition: background-color 0.3s;
+    /* transition: background-color 0.3s; */
 }
 
-.submitButton:hover{
+/* .submitButton:hover{
     background-color: white;
     color: green;
     cursor: pointer;
-}
+} */
 
 
 .back{

@@ -10,17 +10,16 @@ const CardsContainer = () => {
 const dispatch = useDispatch();
 
 const [temperamentosDisponibles, setTemperamentosDisponibles] = useState([]);
-    
+
 const [selectedTemperamento, setSelectedTemperamento ] = useState("");
 
 
-useEffect(()=>{
-    if(selectedTemperamento.length===0){
-        dispatch(getDogs());
-    }
-},[dispatch, selectedTemperamento]);
 
-// console.log("info", selectedTemperamento);
+useEffect(() => {
+    if (selectedTemperamento === "") {
+      dispatch(getDogs());
+    }
+  }, [dispatch, selectedTemperamento]);
 
 
 useEffect(() => {
@@ -44,7 +43,6 @@ const handleFilters = (event) => {
 }
 
 const dogs = useSelector(state=>state.dogs);
-// console.log("info", dogs);
 
 
 const pagination = (event) =>{
@@ -70,6 +68,7 @@ const reset = (event) => {
 const filterApiDb = (event) => {
     dispatch(dogFilterApiDb(event.target.name))
 }
+
 
     return (
         

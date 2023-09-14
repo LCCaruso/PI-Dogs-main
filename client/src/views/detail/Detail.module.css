@@ -5,8 +5,17 @@
     align-items: center;
     justify-content: center;
     margin-left: -20px;
-    
+
 }
+
+.imagenCarga{
+    /* transform: scaleX(-1); */
+    height: 200px;
+    width: 200px;
+    border-radius: 100px;
+    opacity: 0.7;
+}
+
 
 
 .detail{
@@ -36,13 +45,78 @@
     /* height: 400px; */
     width: 900px;
     border-radius: 50px;
-    opacity: 0.9;
+    /* opacity: 0.5; */
     box-shadow: 20px 20px 20px rgba(63, 63, 63, 0.5);
-    transition: box-shadow 2s;
+    
 }
 
 .detail:hover .contenedorGeneral {
     animation: vibrar 0.3s ease-out;
+}
+
+.id:hover{
+    /* animation: vibrar2 1.5s ease-out; */
+    transform: scale(1.1);
+    opacity: 100%;
+    border-radius: 20px;
+    background-color: rgb(253, 187, 45);
+    color: rgb(255, 255, 255);
+}
+
+.nombre:hover{
+    /* animation: vibrar2 1.5s ease-in;} */
+    transform: scale(1.1);
+    opacity: 100%;
+    border-radius: 20px;
+    background-color: rgb(245, 33, 33);
+    color: rgb(255, 255, 255);
+}
+
+.altura:hover{
+    /* animation: vibrar2 1.5s ease-in-out;} */
+    transform: scale(1.1);
+    opacity: 100%;
+    border-radius: 20px;
+    background-color: rgb(211, 45, 233);
+    color: rgb(255, 255, 255);
+}
+.peso:hover{
+    /* animation: vibrar2 1.5s ease-in-out;} */
+    transform: scale(1.1);
+    opacity: 100%;
+    border-radius: 20px;
+    background-color: rgb(35, 151, 247);
+    color: rgb(255, 255, 255);
+}
+.temperamento:hover{
+    /* animation: vibrar2 1.5s ease-in-out; */
+    transform: scale(1.1);
+    opacity: 100%;
+    border-radius: 20px;
+    background-color: rgb(102, 228, 64);
+    color: rgb(255, 255, 255);
+}
+
+.años:hover{
+    /* animation: vibrar2 1.5s ease-in-out; */
+    transform: scale(1.1);
+    opacity: 100%;
+    border-radius: 20px;
+    background-color: rgb(255, 251, 0);
+    color: rgb(0, 0, 0);
+}
+/* .imagen:hover{
+    transform: scale(1.2);
+} */
+
+
+@keyframes vibrar2 {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(2px, -2px); }
+    60% { transform: translate(-2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
 }
 
 
@@ -68,6 +142,7 @@
     height: fit-content;
     border-radius: 40px;
     border: 3px solid white;
+    /* transition: transform 0.2s; */
 }
 
 
@@ -78,105 +153,108 @@
     flex-direction: column;
     padding-top: 5px;
     padding-bottom: 5px;
-    width: 480px;
+    width: 350px;
+   
 
 }
 
 .id{
     padding: 10px;
-    background-color: rgba(77, 216, 170, 0.8);
+    background-color: rgba(253, 173, 0, 0.6);
+    color: rgba(0, 0, 0, 0.6);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 20px;
-    color: rgb(0, 0, 0);
     height: auto;
     width: auto;
-    opacity: 80%;
-    transition: background-color 0.4s;
+    /* opacity: 80%; */
+    transition: transform 0.4s, border-radius 0.3s;
+    /* border-top-right-radius: 50px; */
 }
 
-.id:hover{
-    background-color: rgb(14, 235, 161);;
-}
+/* .id:hover{
+    background-color: rgb(14, 235, 161);
+} */
 
 .nombre{    
     padding: 10px;
-    background-color: rgba(97, 212, 2, 0.918);
+    background-color: rgba(255, 0, 0, 0.6);
+    color: rgba(0, 0, 0, 0.6);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 20px;
-    color: rgb(0, 0, 0);
     height: auto;
     width: auto;
-    opacity: 80%;
-    transition: background-color 0.4s;
+    /* opacity: 80%; */
+    transition: transform 0.4s, border-radius 0.3s;
 }
 
-.nombre:hover{
+/* .nombre:hover{
     background-color: rgb(139, 255, 43);
-}
+} */
 
 .altura{
     padding: 10px;
-    background-color: rgba(219, 168, 0, 0.815);
+    background-color: rgba(169, 8, 190, 0.6);
+    color: rgba(0, 0, 0, 0.6);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 20px;
-    color: rgb(0, 0, 0);
     height: auto;
     width: auto;
-    opacity: 80%;
-    transition: background-color 0.4s;
+    /* opacity: 80%; */
+    transition: transform 0.4s, border-radius 0.3s;
 }
 
-.altura:hover{
+/* .altura:hover{
     background-color: rgba(255, 240, 103, 0.815)
-}
+} */
 
 .peso{
     padding: 10px;
-    background-color: rgba(76, 192, 47, 0.5);
+    background-color: rgba(14, 133, 230, 0.6);
+    color: rgba(0, 0, 0, 0.6);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 20px;
-    color: rgb(0, 0, 0);
     height: auto;
     width: auto;
-    opacity: 80%;
-    transition: background-color 0.4s;
+    /* opacity: 80%; */
+    transition: transform 0.4s, border-radius 0.3s;
 }
 
-.peso:hover{
+/* .peso:hover{
     background-color: rgb(130, 255, 98);
-}
+} */
 
 .temperamento{
     padding: 10px;
-    background-color: rgba(196, 84, 121, 0.5);
+    background-color: rgba(55, 180, 17, 0.6);
+    color: rgba(0, 0, 0, 0.6);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 20px;
-    color: rgb(0, 0, 0);
     height: auto;
     width: auto;
-    opacity: 80%;
-    transition: background-color 0.4s;
+    /* opacity: 80%; */
+    transition: transform 0.4s, border-radius 0.3s;
 }
 
-.temperamento:hover{
+/* .temperamento:hover{
     background-color: rgb(243, 72, 129)
-}
+} */
 
 .años{
     padding: 10px;
-    background-color: rgba(19, 93, 255, 0.5);
+    background-color: rgba(255, 251, 0, 0.6);
+    color: rgba(0, 0, 0, 0.6);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 20px;
-    color: rgb(0, 0, 0);
     height: auto;
     width: auto;
-    opacity: 80%;
-    transition: background-color 0.4s;
+    /* opacity: 80%; */
+    transition: transform 0.4s, border-radius 0.3s;
+    /* border-bottom-right-radius: 50px; */
 }
 
-.años:hover{
+/* .años:hover{
     background-color: rgb(75, 126, 236);
-}
+} */
 
 .link{
     color: rgb(255, 255, 255);
@@ -200,4 +278,5 @@
 .link:hover{
     background-color: rgb(69, 255, 162);
     color: black;
+    box-shadow: 0px 0px 10px rgb(255, 255, 255);
 }

@@ -24,6 +24,7 @@ const Home = () => {
         dispatch(getByName(searchString))
     }
     
+   
     return (
     <div className={style.home}>
         <NavBar handleChange={handleChange} handleSubmit={handleSubmit}/>

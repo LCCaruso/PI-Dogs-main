@@ -7,7 +7,6 @@ export const GET_BY_NAME = "GET_BY_NAME";
 export const GET_TEMPERAMENTS = "GET_TEMPERAMENTS";
 export const CREATE_DOG = "CREATE_DOG";
 export const FILTER_BY_TEMPERAMENT = "FILTER_BY_TEMPERAMENT";
-export const FILTER_BY_SOURCE = "FILTER_BY_SOURCE"; // todavia no lo hago
 export const PAGINATE = "PAGINATE";
 export const ORDEN_AZ = "ORDEN_AZ";
 export const ORDEN_PESO = "ORDEN_PESO";
@@ -15,12 +14,16 @@ export const FILTER_PESO = "FILTER_PESO";
 export const RESET = "RESET";
 export const FILTER_API_DB = "FILTER_API_DB";
 export const RESET_DETAIL = "RESET_DETAIL";
+export const DETAIL_PAGE = "DETAIL_PAGE";
+export const BACK_TO_PREVIOUS_PAGE = "BACK_TO_PREVIOUS_PAGE";
+// export const ULTIMO_ESTADO = "ULTIMO_ESTADO";
 
 
 
 export const createDog = (dog) => {
     return { type: CREATE_DOG, payload: dog };
 };
+
 
 export const getDogs = () => {
     return async function (dispatch){
@@ -84,15 +87,6 @@ export const filterByTemperament = (temperamento) => {
 };
 
 
-export const filterBySource = (temperamento) => {
-    return async function (dispatch){
-        try{
-            dispatch({type: FILTER_BY_SOURCE, payload: temperamento});
-        } catch (error){
-            console.log(error.message)
-        }
-    };
-};
 
 export const page = (order) => {
     return async function (dispatch){
@@ -165,3 +159,34 @@ export const resetSelectedDog = (order) => {
         }
     };
 };
+
+export const getDetailPage = (order) => {
+    return async function (dispatch){
+        try{
+            dispatch({type: DETAIL_PAGE, payload: order});
+        } catch (error){
+            console.log(error.message)
+        }
+    };
+};
+
+export const getBackPreviousPage = (order) => {
+    return async function (dispatch){
+        try{
+            dispatch({type: BACK_TO_PREVIOUS_PAGE, payload: order});
+        } catch (error){
+            console.log(error.message)
+        }
+    };
+};
+
+
+// export const getUltimoEstado = () => {
+//     return async function (dispatch){
+//         try{
+//             dispatch({type: ULTIMO_ESTADO });
+//         } catch (error){
+//             console.log(error.message)
+//         }
+//     };
+// };

@@ -12,12 +12,12 @@ const Form = () => {
     const [form, setForm] = useState({    
       //setForm es la funcion que puede modificar el estado, en realidad agrega la info que ingresa el cliente en los inputs
         nombre: "",
-        alturaMin: 1,
-        alturaMax: 2,
-        pesoMin: 1,
-        pesoMax: 2,
-        años_de_vidaMin: 1,
-        años_de_vidaMax: 2,
+        alturaMin: "",
+        alturaMax: "",
+        pesoMin: "",
+        pesoMax: "",
+        años_de_vidaMin: "",
+        años_de_vidaMax: "",
         temperamento: [],
         imagen: "",
     });
@@ -36,6 +36,7 @@ const Form = () => {
 
 
     const [temperamentosDisponibles, setTemperamentosDisponibles] = useState([]);
+    const [dogCreated, setDogCreated] = useState(false);
 
     useEffect(() => {
       // Realiza una solicitud GET para obtener la lista de temperamentos desde el servidor
@@ -48,64 +49,45 @@ const Form = () => {
         .catch((error) => {
           console.error("Error al obtener los temperamentos:", error);
         });
-    }, []);
+        validate(form);
+    }, [form]);
 
 
-  //   const disableFunction = () => {
-  //     let disableAux = true;
-  //     for(let err in error) {    //for in recorre las propiedades del objeto error
-  //     if(error[err] === "") disableAux = false;
-  //     else{
-  //       disableAux = true;
-  //       break;
-  //     }
-  //   }
-  //   return disableAux;
-  // }
-
-
-    const changeHandler = (event) => {
+     const changeHandler = (event) => {
         const property = event.target.name;
         const value = event.target.value;
         setForm({ ...form, [property]: value });
         validate({ ...form, [property]: value }, property);
       }; 
 
-      // const changeHandler = (event) => {
-      //   setForm({ 
-      //     ...form, 
-      //     [event.target.name]: event.target.value 
-      //   });
-      //   validate({ 
-      //     ...form, 
-      //     [event.target.name]: event.target.value 
-      //   });
-      // }; 
 
+      const agregarTemperamento = (nuevoTemperamento) => {
+        // Verificar si el temperamento ya está presente en la lista
+        if (!form.temperamento.includes(nuevoTemperamento)) {
+          const updatedTemperamentos = [...form.temperamento, nuevoTemperamento];
+          setForm({ ...form, temperamento: updatedTemperamentos });
 
-    // const addRandomTemperamento = () => {
-    //     if (temperamentosDisponibles.length > 0) {
-    //       const randomIndex = Math.floor(Math.random() * temperamentosDisponibles.length);
-    //       const randomTemperamento = temperamentosDisponibles[randomIndex].nombre;
-      
-    //       setForm({ ...form, temperamento: [...form.temperamento, randomTemperamento] });
-    //     }
-    //   };
-
-    const addTemperamento = (nuevoTemperamento) => {
-      if (
-        nuevoTemperamento &&
-        !form.temperamento.includes(nuevoTemperamento)
-      ) {
-        setForm({ ...form, temperamento: [...form.temperamento, nuevoTemperamento] });
-      }
-    };
+          // Validación del temperamento
+          if (updatedTemperamentos.length === 0) {
+            setError({ ...error, temperamento: "Elija al menos un temperamento" });
+          } else {
+            setError({ ...error, temperamento: "" });
+          }
+        }
+      };
     
-    const removeTemperamento = (index) => {
-      const updatedTemperamentos = [...form.temperamento];
-      updatedTemperamentos.splice(index, 1);
-      setForm({ ...form, temperamento: updatedTemperamentos });
-    };
+      const removeTemperamento = (index) => {
+        const updatedTemperamentos = [...form.temperamento];
+        updatedTemperamentos.splice(index, 1);
+        setForm({ ...form, temperamento: updatedTemperamentos });
+
+        if (updatedTemperamentos.length === 0) {
+          // alert("Elija al menos un temperamento");
+          setError({ ...error, temperamento: "Elija al menos un temperamento" });
+        } else {
+          setError({ ...error, temperamento: "" });
+        }
+      };
     
       const validate = (form) => {
 
@@ -155,45 +137,52 @@ const Form = () => {
         } else {
           newError.años_de_vidaMax = "";
         }
-      
-  
-        if (form.temperamento.length === 0) {
+        
+        if (form.temperamento.length === 0 || !form.temperamento) {
           newError.temperamento = "Elija al menos un temperamento";
         } else {
           newError.temperamento = "";
         }
-  
+        setError(newError); // Actualiza el estado de error
+      };
+
         // if (!patternUrl.test(form.imagen)) {
         //   newError.imagen = "Url incorrecta";
         // } else {
         //   newError.imagen = "";
         // }
-      
-          
-        setError(newError); // Actualiza el estado de error
-      
-    
-      };
 
-     const submitHandler = (event) => {
-        event.preventDefault();
 
-        // Convierte el arreglo de temperamentos en una cadena de texto separada por comas
-        const temperamentoString = form.temperamento.join(", ");
+    const disable = () => {
+      let auxDisabled = true;
+      for (let err in error){
+        if(error[err] === "") auxDisabled = false;
+        else{ 
+        auxDisabled = true
+        break;
+       }
+      }
+      return auxDisabled;
+    }
 
-        // Crea un nuevo objeto con la cadena de temperamentos
-         const formData = {
+      const submitHandler = async (event) => {
+        try {
+          const temperamentoString = form.temperamento.join(", ");
+          const formData = {
             ...form,
             temperamento: temperamentoString,
-        };
+          };
+          const response = await axios.post("http://localhost:3001/dogs", formData);
+          dispatch(createDog(response.data));
+          setDogCreated(true); // Actualiza el estado cuando se crea el perro con éxito
+          alert("Perro creado con éxito!!!");
+        } catch (error) {
+          alert(error.response.data.error);
+        } if(dogCreated === false){
+          event.preventDefault()
+        }
+      };
 
-        axios.post("http://localhost:3001/dogs", formData)
-        .then((res) => {
-            dispatch(createDog(res.data));
-            alert("Dog creado con éxito");
-        })
-        .catch((err) => alert("Error al crear Dog, revise los campos incompletos"));
-    }
 
 
     return (
@@ -288,7 +277,8 @@ const Form = () => {
         </div>
         <div className={style.containerGruposTemp}>
           
-          <select className={style.select} name="temperamentoSelect" onChange={(event) => addTemperamento(event.target.value)} value="">
+          <select className={style.select} name="temperamentoSelect" onChange={
+            (event) => agregarTemperamento(event.target.value)} value="">
             <option value="" disabled>Seleccione un temperamento</option>
             {temperamentosDisponibles.map((temp, index) => (
               <option key={index} value={temp.nombre}>
@@ -320,7 +310,7 @@ const Form = () => {
         </div>
 
   
-        <button className={style.submitButton} type="submit">CREAR DOG</button>
+        <button disabled={disable() || dogCreated} className={style.submitButton} type="submit">CREAR DOG</button>
 
     </form>
     </div>
