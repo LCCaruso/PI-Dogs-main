@@ -1,12 +1,14 @@
 .contenedor{
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: auto;
     align-items: center;
     justify-content: center;
-    background-image: url("https://ahorasanjuan.com/wp-content/uploads/2021/07/eee82f85844b55a26c5b78ca2ed16d28.jpg");
-    background-size: cover;
+    justify-items: center;
+    text-align: center;
+    background-image: url("https://img.freepik.com/fotos-premium/grupo-perros-sobre-fondo-blanco_922063-31.jpg?w=2000");
+    background-size: contain;
     background-position: center;
-    height: 44vw;
+    height: 46vw;
     margin: -8px;
     
 }
@@ -15,12 +17,12 @@
     margin-top: -100px;
     text-align: center;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
-    color:azure;
-    font-size: 70px;
+    color:rgba(93, 2, 121, 0.507);
+    font-size: 80px;
 }
 
 .boton{
-    margin-top: -30px;
+    margin-top: 40px;
     display: flex;
     background-color: beige;
     border-radius: 60px;

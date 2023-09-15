@@ -11,13 +11,14 @@ const dispatch = useDispatch();
 const myFavorites = useSelector((state)=> state.myFavorites);
 const [isFav, setIsFav] = useState(false);
 
-useEffect(()=>{
+useEffect(()=>{ //chequea si el perro actual esta en la lista de favoritos
+                //useEffect mantiene actualizado el estado de isFav si el perro esta o no en la lista
     const isDogFav = myFavorites.some((fav) => fav.id === props.id);
     setIsFav(isDogFav)
 },[myFavorites, props.id]);
 
 
-const handleFav = (id) => {
+const handleFav = (id) => { //se encarga de agregar y eliminar perros de la lista de favoritos
     if(isFav){
         setIsFav(false)
         dispatch(removeFav(id));

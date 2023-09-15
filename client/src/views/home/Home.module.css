@@ -1,7 +1,8 @@
 .home{
-    background-image: url("https://wallpapers.com/images/hd/neutral-color-background-1920-x-1080-gnm3dr6coxpbwoci.jpg");
-    background-size: cover;
+    background-image: url("https://img.freepik.com/vector-gratis/fondo-textura-abstracta-pastel-opaco-vector-pastel_53876-110546.jpg?w=2000");
+    background-size:cover;
     background-attachment: fixed;
-    height: 65vw;
+    height: 75vw;
+    margin: -8px;
     
 }

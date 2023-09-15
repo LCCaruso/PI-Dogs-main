@@ -19,6 +19,8 @@ export const BACK_TO_PREVIOUS_PAGE = "BACK_TO_PREVIOUS_PAGE";
 export const ADD_FAV = "ADD_FAV";
 export const REMOVE_FAV = "REMOVE_FAV";
 export const DOG_FAVS = "DOG_FAVS";
+export const ACTUALIZAR_PAGE = "ACTUALIZAR_PAGE";
+
 // export const ULTIMO_ESTADO = "ULTIMO_ESTADO";
 
 
@@ -215,14 +217,3 @@ export const dogFavs = () => {
         }
     };
 };
-
-
-// export const getUltimoEstado = () => {
-//     return async function (dispatch){
-//         try{
-//             dispatch({type: ULTIMO_ESTADO });
-//         } catch (error){
-//             console.log(error.message)
-//         }
-//     };
-// };

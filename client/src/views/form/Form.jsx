@@ -38,6 +38,9 @@ const Form = () => {
     const [temperamentosDisponibles, setTemperamentosDisponibles] = useState([]);
     const [dogCreated, setDogCreated] = useState(false);
 
+
+   
+
     useEffect(() => {
       // Realiza una solicitud GET para obtener la lista de temperamentos desde el servidor
       axios
@@ -50,22 +53,25 @@ const Form = () => {
           console.error("Error al obtener los temperamentos:", error);
         });
         validate(form);
+        // // eslint-disable-next-line
     }, [form]);
+        
 
-
-     const changeHandler = (event) => {
-        const property = event.target.name;
-        const value = event.target.value;
+     const changeHandler = (event) => { //esta funcion actualiza el estado del formulario conel nuevo valor ingresado en los campos inputs
+        const property = event.target.name; //inputs
+        const value = event.target.value; //valor ingresado
         setForm({ ...form, [property]: value });
+        //llama a la funcion para validar los campos actualizados en tiempo real
         validate({ ...form, [property]: value }, property);
       }; 
 
 
-      const agregarTemperamento = (nuevoTemperamento) => {
+      const agregarTemperamento = (nuevoTemperamento) => { //funcion para agregar el temperamento a la lista del formilario
         // Verificar si el temperamento ya está presente en la lista
-        if (!form.temperamento.includes(nuevoTemperamento)) {
+        if (!form.temperamento.includes(nuevoTemperamento)) { //si no esta presente, se agrega
           const updatedTemperamentos = [...form.temperamento, nuevoTemperamento];
           setForm({ ...form, temperamento: updatedTemperamentos });
+          //se utiliza la funcion para actualizar el formulario y se agrega el temp nuevo a la propiedad temperamento
 
           // Validación del temperamento
           if (updatedTemperamentos.length === 0) {
@@ -76,10 +82,11 @@ const Form = () => {
         }
       };
     
-      const removeTemperamento = (index) => {
+      const removeTemperamento = (index) => { //funcion q se utiliza para eliminar un temperamento
+        //index es la posicion del elemento q quiero eliminar
         const updatedTemperamentos = [...form.temperamento];
         updatedTemperamentos.splice(index, 1);
-        setForm({ ...form, temperamento: updatedTemperamentos });
+        setForm({ ...form, temperamento: updatedTemperamentos }); //se actualiza el estado del form con la lista de temp eliminado
 
         if (updatedTemperamentos.length === 0) {
           // alert("Elija al menos un temperamento");
@@ -89,12 +96,13 @@ const Form = () => {
         }
       };
     
+
       const validate = (form) => {
 
         const patternNombre = /^[A-Za-z\s]+$/;
         const patternNumeros = /^[0-9]+$/;
         // const patternUrl = /^([a-z0-9_-]+\.){1,2}[a-z]{2,6}(\.[a-z]{2,6})$/;
-        const newError = { ...error }; // Copia el estado de error existente
+        const newError = { ...error }; // copia del estado de error existente
       
         if (!patternNombre.test(form.nombre) || !form.nombre) {
           newError.nombre = "Ingrese solo letras A-Z";
@@ -143,52 +151,60 @@ const Form = () => {
         } else {
           newError.temperamento = "";
         }
-        setError(newError); // Actualiza el estado de error
-      };
-
         // if (!patternUrl.test(form.imagen)) {
         //   newError.imagen = "Url incorrecta";
         // } else {
         //   newError.imagen = "";
         // }
+        setError(newError); // Actualiza el estado de error
+      };
 
 
-    const disable = () => {
-      let auxDisabled = true;
+
+    const disable = () => { //para verificar si se deshabilita el boton submit, iterando las props del objeto error
+      let auxDisabled = true; //si la variable es true se deshabilita, si es false se habilita
       for (let err in error){
         if(error[err] === "") auxDisabled = false;
         else{ 
-        auxDisabled = true
+        auxDisabled = true //cualquier input q este con error, es true y se deshabilita
         break;
        }
       }
       return auxDisabled;
     }
-
+    
       const submitHandler = async (event) => {
         try {
-          const temperamentoString = form.temperamento.join(", ");
+          const temperamentoString = form.temperamento.join(", "); 
+          //la propiedad temperamento, de la variable de estado Form, junta los temperamentos del input en un string ""
           const formData = {
             ...form,
             temperamento: temperamentoString,
           };
+          
           const response = await axios.post("http://localhost:3001/dogs", formData);
+          //los datos del formulario los paso en formData (incluido los temperamentos en forma de cadena "hola, perro, paz")
+          
+          
           dispatch(createDog(response.data));
-          setDogCreated(true); // Actualiza el estado cuando se crea el perro con éxito
+          //actualiza el estado global de la aplicación con el nuevo perro
+          setDogCreated(true); 
+          // actualiza el estado cuando se crea el perro con exito
           alert("Perro creado con éxito!!!");
         } catch (error) {
           alert(error.response.data.error);
+          //con este alert muestro los errores del back
         } if(dogCreated === false){
           event.preventDefault()
         }
       };
-
+      
 
 
     return (
     <div className={style.body}>
       <div className={style.back}>
-       <Link to="/home">HOME</Link>
+       <Link className={style.textHome} to="/home">HOME</Link>
        </div>
     <form className={style.formContainer} onSubmit={submitHandler}>
 
@@ -277,8 +293,7 @@ const Form = () => {
         </div>
         <div className={style.containerGruposTemp}>
           
-          <select className={style.select} name="temperamentoSelect" onChange={
-            (event) => agregarTemperamento(event.target.value)} value="">
+          <select className={style.select} name="temperamentoSelect" onChange={(event) => agregarTemperamento(event.target.value)} value="">
             <option value="" disabled>Seleccione un temperamento</option>
             {temperamentosDisponibles.map((temp, index) => (
               <option key={index} value={temp.nombre}>

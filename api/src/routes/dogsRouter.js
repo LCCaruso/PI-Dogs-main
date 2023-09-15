@@ -4,7 +4,7 @@ const { getDogsHandler, getDogsByIdHandler, createDogsHandler } = require("../ha
 const dogsRouter = Router();
 
 dogsRouter.get("/", getDogsHandler);
-dogsRouter.get("/:id", getDogsByIdHandler);
+dogsRouter.get("/:id", getDogsByIdHandler); //peticion por id
 dogsRouter.post("/", createDogsHandler);
 
 

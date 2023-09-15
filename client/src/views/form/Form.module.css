@@ -22,8 +22,6 @@
 }
 
 .spanErrors{
-    /* display: flex;
-    flex-direction: column; */
     background-color: rgb(255, 255, 255);
     color: red;
     font-size: 16px;
@@ -207,15 +205,8 @@
 }
 
 .temperamentoSeleccionado{
-    /* align-items: center;
-    align-content: center;
-    justify-content: center; */
-    /* justify-items: center; */
-    /* display: flex;
-    flex-direction: row; */
     padding-left: 10px;
     padding-bottom: 5px;
-    /* background-color: blue; */
     width: min-content;
 }
 
@@ -312,21 +303,16 @@
     /* transition: background-color 0.3s; */
 }
 
-/* .submitButton:hover{
-    background-color: white;
-    color: green;
-    cursor: pointer;
-} */
-
-
 .back{
+    display: flex;
+    flex-direction: column;
     color: rgb(90, 4, 4);
     font-family: Arial, Helvetica, sans-serif;
     padding-top: 14px;
     align-items: right;
     align-content: center;
     text-align: center;
-    text-decoration: none;
+    /* text-decoration: none; */
     margin-left: 910px;
     font-size: 18px;
     background-color: rgba(236, 219, 162, 0.9);
@@ -336,6 +322,10 @@
     border-top-left-radius: 50px;
     cursor: pointer;
     transition: background-color 0.3s;
+}
+
+.textHome{
+    text-decoration: none;
 }
 
 .back:hover{

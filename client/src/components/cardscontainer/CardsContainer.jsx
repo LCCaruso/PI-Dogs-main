@@ -9,6 +9,12 @@ const CardsContainer = () => {
 
 const dispatch = useDispatch();
 
+const dogsBackUp = useSelector((state) => state.dogsBackUp);
+const dogsFiltered = useSelector((state) => state.dogsFiltered);
+const filters = useSelector((state) => state.filters);
+const currentPage = useSelector((state) => state.currentPage);
+console.log("current page:", currentPage)
+
 const [temperamentosDisponibles, setTemperamentosDisponibles] = useState([]);
 
 const [selectedTemperamento, setSelectedTemperamento ] = useState("");
@@ -73,6 +79,19 @@ const soloFav = () => {
     dispatch(dogFavs())
 }
 
+const totalPages = filters
+? Math.ceil(dogsFiltered.length / 8)
+: Math.ceil(dogsBackUp.length / 8);
+
+const pageTotal = () => {
+    if (currentPage < 0) {
+        return 0;
+    } else if (currentPage >= totalPages) {
+        return totalPages - 1; 
+    } else {
+        return currentPage;
+    }
+}
 
     return (
         
@@ -83,8 +102,8 @@ const soloFav = () => {
                 <button name="pesoMayor" onClick={ordenPeso}>Orden mayor/menor peso</button>
                 <button name="pesoMenor" onClick={ordenPeso}>Orden menor/mayor peso</button>
                 <div className={style.paginado}>
-                <button name="prev" onClick={pagination}>Prev</button>
-                <button name="next" onClick={pagination}>Next</button>
+                <button disabled={currentPage === 0} name="prev" onClick={pagination}>Prev</button>
+                <button disabled={currentPage === totalPages -1} name="next" onClick={pagination}>Next</button>
                 </div>
                 <div >
                 <select className={style.select} onChange={handleFilters} name="filter" id="" value={selectedTemperamento}>
@@ -98,6 +117,9 @@ const soloFav = () => {
                 <button name="api" onClick={filterApiDb}>Api</button>
                 <button name="db" onClick={filterApiDb}>Base de Datos</button>
                 <button className={style.reset} onClick={reset}>RESET</button>
+            </div>
+            <div className={style.paginadoContainer}>
+                <span className={style.paginacion}>Página {pageTotal() +1} de {totalPages}</span>
             </div>
         <div className={style.contenedorDeCards}>
             {dogs.map(dog=>{

@@ -7,13 +7,13 @@ import style from "./Detail.module.css"
 
 const Detail = () => {
 
-    const dog = useSelector((state)=>state.dog)
-    const {id} = useParams();
-    const dispatch = useDispatch();
+    const dog = useSelector((state)=>state.dog) //hook de redux, solicito el estado dog de la store
+    const {id} = useParams(); //para obtener el id de la url actual
+    const dispatch = useDispatch(); //para despachar acciones al reducer
 
     useEffect(()=>{
-        dispatch(getDog(id));
-        return () => {
+        dispatch(getDog(id)); //cuando se monta el componente, despacha la accion para obtener info por el id
+        return () => { //y cuando se desmonta, ejecuto la funcion de limpieza
             dispatch(resetSelectedDog());
           };
     },[dispatch,id]);

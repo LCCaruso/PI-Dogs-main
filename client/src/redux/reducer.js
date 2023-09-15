@@ -122,7 +122,6 @@ const rootReducer = (state = initialState, action) => {
                 } else {
                     state.currentPage = action.payload === "next" ? next_page : prev_page;
                 }
-
                 return {
                     ...state,
                     dogs: (state.filters ? [...state.dogsFiltered] : [...state.dogsBackUp]).splice(first_index, 8),
@@ -335,21 +334,6 @@ const rootReducer = (state = initialState, action) => {
                         filters: true
                         }
                         };
-
-        // case ULTIMO_ESTADO:
-        //         if (state.filters) {
-        //             return {
-        //             ...state,
-        //             dogs: [...state.dogsFiltered].splice(0, 8),
-        //             currentPage: 0,
-        //             // No cambiamos los detalles del perro en este caso
-        //         };
-        //         } else {
-        //             return {
-        //             ...state,
-        //             // No cambiamos los detalles del perro en este caso
-        //         };
-        //     }
         case RESET:
             return {
                 ...state,
